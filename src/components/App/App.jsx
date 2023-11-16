@@ -4,6 +4,7 @@ import PizzaList from '../PizzaList/PizzaList.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './App.css';
+import CustomerForm from '../CustomerForm/CustomerForm.jsx';
 
 function App() {
 
@@ -37,6 +38,7 @@ useEffect(() => {
       <p>Pizza is great.</p>
       <PizzaList setPizzaList={setPizzaList} pizzaList={pizzaList} />
   
+      <CustomerForm />
     </div>
   );
 }
