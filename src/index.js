@@ -11,6 +11,4 @@ root.render(
 );
 
 
-// JUAN = ADD_PIZZA
-
 
