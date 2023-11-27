@@ -9,7 +9,7 @@ function CustomerForm() {
         streetAddress: '',
         city: '',
         zip: '',
-        //type: ''
+        type: ''
      });
 
 
@@ -89,7 +89,20 @@ function CustomerForm() {
                 placeholder="Zip"
             />
             <br></br>
-            {/* <input type="radio"/> */}
+            <input 
+                type="radio"
+                id="pickup"
+                name="type"
+                value="Pickup"
+            />
+            <label for="pickup">Pickup</label> 
+            <input 
+                type="radio"
+                id="delivery"
+                name="type"
+                value="Delivery"
+            />
+            <label for="delivery">Delivery</label> 
             <br></br>
             <button type='submit'>
                 Next
