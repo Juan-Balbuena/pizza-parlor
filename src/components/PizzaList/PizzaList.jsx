@@ -1,21 +1,20 @@
 import React from 'react';
-import PizzaItem from '../PizzaItem/PizzaItem.jsx';
 import { useSelector } from 'react-redux';
-import { Grid } from "@mui/material";
+import PizzaItem from '../PizzaItem/PizzaItem';
+import { Grid, Paper, Card, CardContent, Typography } from '@mui/material';
 
-
-function PizzaList(props) {
-    const cart = useSelector(store => store.cart)
-
+function PizzaList() {
+    const pizzas = useSelector(store => store.pizzas)
+    console.log(pizzas);
     return (
-       <Grid container spacing={2}>
-        {
-            props.pizzaList.map((pizza, i) => {
-                return <PizzaItem key={i} />
-            })
-        }
+        <Grid container xs={12} md={6}>
+            
+          
+                {
+                    pizzas.map((pizza, i) => <PizzaItem key={i} pizza={pizza} />)
+                }
         
-       </Grid>
+        </Grid>
     )
 }
 
