@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PizzaList from '../PizzaList/PizzaList.jsx';
+import CheckoutPage from '../CheckoutPage/CheckoutPage.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './App.css';
@@ -53,6 +54,10 @@ useEffect(() => {
 
         <Route exact path='/address-info'>
           <CustomerForm />
+        </Route>
+
+        <Route exact path='/checkout-page'>
+          <CheckoutPage />
         </Route>
 
       </Router >
