@@ -23,24 +23,30 @@ function CustomerForm() {
      const handleAddressChange = (event) => {
         setCustomerToAdd({
             ...customerToAdd,
-            name: event.target.value,
+            streetAddress: event.target.value,
         });
      }
 
      const handleCityChange = (event) => {
         setCustomerToAdd({
             ...customerToAdd,
-            name: event.target.value,
+            city: event.target.value,
         });
      }
 
      const handleZipChange = (event) => {
         setCustomerToAdd({
             ...customerToAdd,
-            name: event.target.value,
+            zip: event.target.value,
         });
      }
 
+     const handleTypeChange = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            type: event.target.value,
+        });
+     }
 
 
 
@@ -90,6 +96,7 @@ function CustomerForm() {
             />
             <br></br>
             <input 
+                onChange={handleTypeChange}
                 type="radio"
                 id="pickup"
                 name="type"
@@ -97,6 +104,7 @@ function CustomerForm() {
             />
             <label for="pickup">Pickup</label> 
             <input 
+                onChange={handleTypeChange}
                 type="radio"
                 id="delivery"
                 name="type"
