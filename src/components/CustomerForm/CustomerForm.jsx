@@ -1,8 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function CustomerForm() {
+    let history = useHistory();
     const dispatch = useDispatch();
+    const customerInfo = useSelector(store => store.customerInfo);
+    
 
     let [customerToAdd, setCustomerToAdd] = useState({
         name: '', 
@@ -55,9 +59,10 @@ function CustomerForm() {
         console.log(`Adding customer info:`, customerToAdd)
         event.preventDefault();
         
-        const action = { type: 'ADD_CUSTOMER_INFO', payload: setCustomerToAdd };
+        const action = { type: 'ADD_CUSTOMER_INFO', payload: customerToAdd };
          dispatch(action);
 
+        history.push("/checkout-page")
 
     };
 
@@ -116,6 +121,8 @@ function CustomerForm() {
                 Next
             </button>
         </form>
+
+
         </>
     );
 }
