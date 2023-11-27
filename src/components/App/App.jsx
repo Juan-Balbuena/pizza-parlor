@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
 import PizzaList from '../PizzaList/PizzaList.jsx';
 import CheckoutPage from '../CheckoutPage/CheckoutPage.jsx';
+
+import Pizzas from '../Pizzas/Pizzas.jsx';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './App.css';
@@ -20,8 +24,8 @@ function App() {
   const getPizzas = () => {
     axios.get('/api/pizza').then((response) => {
         setPizzaList(response.data);
-        // const action = {type: 'ADD_PIZZA', payload: response.data};
-        // dispatch(action);
+        const action = {type: 'ADD_PIZZA', payload: response.data};
+        dispatch(action);
     }).catch((error) => {
         console.log('Error getting pizza list', error);
         alert('Something went wrong!')
