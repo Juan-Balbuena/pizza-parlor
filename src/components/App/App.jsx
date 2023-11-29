@@ -53,7 +53,7 @@ useEffect(() => {
         </Route>
 
         <Route exact path='/order'>
-          <PizzaList />
+          <Pizzas />
         </Route>
 
         <Route exact path='/address-info'>
