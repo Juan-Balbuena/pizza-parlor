@@ -7,7 +7,7 @@ function PizzaList() {
     const pizzas = useSelector(store => store.pizzas)
     console.log(pizzas);
     return (
-        <Grid container xs={12} md={6}>
+        <Grid >
             
           
                 {
