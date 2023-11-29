@@ -3,9 +3,10 @@ import { useDispatch, useSelector} from 'react-redux';
 
 function CheckoutPage () {
 const customerInfo = useSelector(store => store.customerInfo);
+const cart = useSelector(store => store.cart);
 
 
-
+console.log(cart);
     return(
         <>
         <h1>Step 3: Checkout</h1>
@@ -21,7 +22,36 @@ const customerInfo = useSelector(store => store.customerInfo);
             )}
         </ul>
 
-        
+        <table>
+               <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+               </thead>
+
+               <tbody>
+                    {cart.map((item, index) =>
+                        <tr key={index}>
+                            <td>{item.name}</td> 
+                            <td>{item.price}</td>
+                        </tr>
+                    )}
+               </tbody>
+            </table>
+
+
+
+
+
+        {/* <ul>
+            {cart.map((item, index) =>
+            <li key={index}>
+                {item.name} <br></br>
+                {item.price}
+            </li>
+            )}    
+        </ul> */}
         
         </>
     )
