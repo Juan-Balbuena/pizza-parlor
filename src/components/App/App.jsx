@@ -12,39 +12,60 @@ import './App.css';
 import CustomerForm from '../CustomerForm/CustomerForm.jsx';
 import Home from '../Home/Home.jsx';
 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { HashRouter as Router, Route } from 'react-router-dom/cjs/react-router-dom.min.js';
 
 function App() {
 
   const [pizzaList, setPizzaList] = useState([]);
 
-  const cart = useSelector(store => store.cart)
+  const cart = useSelector(store => store.cart);
+  console.log(cart);
+
+  const prices = cart.reduce((sumPrice, item) => Number(sumPrice) + Number(item.price), 0);
+
+  const formattedPrice = prices.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
   const dispatch = useDispatch();
 
   const getPizzas = () => {
     axios.get('/api/pizza').then((response) => {
-        setPizzaList(response.data);
-        const action = {type: 'ADD_PIZZA', payload: response.data};
-        dispatch(action);
+      setPizzaList(response.data);
+      const action = { type: 'SET_PIZZA', payload: response.data };
+      dispatch(action);
     }).catch((error) => {
-        console.log('Error getting pizza list', error);
-        alert('Something went wrong!')
+      console.log('Error getting pizza list', error);
+      alert('Something went wrong!');
     })
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     getPizzas();
-}, []);
+  }, []);
 
   return (
 
     <>
+
       <div className='App'>
+
         <header className='App-header'>
-          <h1 className='App-title'>Prime Pizza</h1>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ textAlign: 'center', flex: 1 }}>
+              <h1 className='App-title' style={{ textAlign: 'left' }}>Prime Pizza</h1>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <h2 className='price' style={{ margin: '0', marginRight: '10px' }}>{formattedPrice}</h2>
+              <ShoppingCartIcon />
+            </div>
+          </div>
         </header>
 
       </div>
+
 
       <Router>
 

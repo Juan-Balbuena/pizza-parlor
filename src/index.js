@@ -43,8 +43,9 @@ const pizzas = (state = [], action) => {
 
 const cart = (state = [], action) => {
 
+    console.log(state);
     if (action.type === 'ADD_PIZZA') {
-        return [...state, action.payload];
+        return [...state, action.payload.pizza];
     }
 
     return state;
