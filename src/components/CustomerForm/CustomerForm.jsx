@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Grid, Container } from "@mui/material";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -75,8 +75,12 @@ function CustomerForm() {
     return (
         <>
         <h2>Customer Information</h2>
+    <Grid margin={2} > 
+    {/* added container, but I'm not sure if it's necessary */}
+    <Container>
         <form onSubmit={(event) => addCustomerInfo(event)}>
             <TextField
+            
                 id="outlined-name-input"
                 variant="outlined"
                 type='text'
@@ -134,6 +138,8 @@ function CustomerForm() {
                 type='submit'>Next</Button>
 
         </form>
+    </Container>
+    </Grid> 
         </>
     );
 }
