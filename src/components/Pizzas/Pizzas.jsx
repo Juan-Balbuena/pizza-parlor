@@ -1,15 +1,17 @@
 import React from 'react';
 import PizzaList from '../PizzaList/PizzaList.jsx';
 import { useSelector, useDispatch } from 'react-redux';
-import { Grid } from "@mui/material";
+import { Button} from "@mui/material";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 
 function Pizzas() {
     
     const dispatch = useDispatch();
     // const [pizzas, setPizzas] = useState([]);
+    const history = useHistory();
 
   const getPizzas = () => {
     axios.get('/api/pizza').then((response) => {
@@ -27,11 +29,13 @@ function Pizzas() {
   }, []);
 
     return (
-       <div>
-        <h2>Pizza Choices</h2>
+      <>
+        <p>Pizza Choices</p>
         <PizzaList />
-
-       </div>
+        <br></br>
+        <Button variant="outlined" onClick={e => history.push('/address-info')}
+                endIcon={<ArrowCircleRightOutlinedIcon />}>Customer Info</Button>
+      </>
     )
 }
 

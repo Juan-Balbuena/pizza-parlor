@@ -5,7 +5,6 @@ import { Grid, Paper, Card, CardContent, Typography } from '@mui/material';
 
 function PizzaList() {
     const pizzas = useSelector(store => store.pizzas)
-    console.log(pizzas);
     return (
         <Grid >
             
