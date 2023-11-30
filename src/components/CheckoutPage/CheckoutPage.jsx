@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 
+
 function CheckoutPage () {
 const customerInfo = useSelector(store => store.customerInfo);
 const cart = useSelector(store => store.cart);
