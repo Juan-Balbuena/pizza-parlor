@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { Grid, Paper, Card, CardContent, Typography, CardMedia, Button, Container } from "@mui/material"
 
-function PizzaItem({ pizza }){
+function PizzaItem({ pizza }) {
+    
     const dispatch = useDispatch();
 
     const addPizzaToCart = () => {
         console.log(pizza);
-        dispatch({ type: 'ADD_PIZZA', payload: pizza })
+        dispatch({ type: 'ADD_PIZZA', payload: { pizza, price: pizza.price } })
     }
 
 
