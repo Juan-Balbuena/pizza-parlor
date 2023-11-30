@@ -40,20 +40,6 @@ console.log(cart);
                     )}
                </tbody>
             </table>
-
-
-
-
-
-        {/* <ul>
-            {cart.map((item, index) =>
-            <li key={index}>
-                {item.name} <br></br>
-                {item.price}
-            </li>
-            )}    
-        </ul> */}
-        
         </>
     )
 }
