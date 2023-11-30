@@ -8,6 +8,7 @@ function PizzaItem({ pizza }){
     const dispatch = useDispatch();
 
     const addPizzaToCart = () => {
+        console.log(pizza);
         dispatch({ type: 'ADD_PIZZA', payload: pizza })
     }
 
