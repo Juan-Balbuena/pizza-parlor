@@ -1,11 +1,13 @@
 import React from 'react';
 import PizzaList from '../PizzaList/PizzaList.jsx';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button} from "@mui/material";
+import { Button, Box} from "@mui/material";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import './Pizzas.css';
+
 
 function Pizzas() {
     
@@ -30,11 +32,13 @@ function Pizzas() {
 
     return (
       <>
-        <p>Pizza Choices</p>
+        <h2>Choose Your Pizza</h2>
         <PizzaList />
         <br></br>
-        <Button variant="outlined" onClick={e => history.push('/address-info')}
-                endIcon={<ArrowCircleRightOutlinedIcon />}>Customer Info</Button>
+          <Box m={1} display="flex" justifyContent="flex-end" alignItems="flex-end">
+            <Button flex="right" variant="outlined" onClick={e => history.push('/address-info')}
+                    endIcon={<ArrowCircleRightOutlinedIcon />}>Customer Info</Button>
+          </Box>
       </>
     )
 }
