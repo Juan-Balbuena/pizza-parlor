@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { TextField, Button, Grid, Container } from "@mui/material";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 function CustomerForm() {
     let history = useHistory();
@@ -71,58 +75,70 @@ function CustomerForm() {
     return (
         <>
         <h2>Customer Information</h2>
+    <Grid margin={2} > 
+    {/* added container, but I'm not sure if it's necessary */}
+    <Container>
         <form onSubmit={(event) => addCustomerInfo(event)}>
-            <input 
+            <TextField
+            
+                id="outlined-name-input"
+                variant="outlined"
+                type='text'
+                label="Name"
+                //autoComplete="Name"
                 onChange={handleNameChange}
                 required
-                type='text'
-                placeholder="Name"
+                size="small"
             />
             <br></br>
-            <input 
+            <TextField
+                id="outlined-address-input"
+                variant="outlined"
+                type='text'
+                label="Address"
+                //autoComplete="Address"
                 onChange={handleAddressChange}
                 required
-                type='text'
-                placeholder="Street Address"
+                size="small"
             />
             <br></br>
-            <input 
+            <TextField
+                id="outlined-city-input"
+                variant="outlined"
+                type='text'
+                label="City"
+                //autoComplete="City"
                 onChange={handleCityChange}
                 required
-                type='text'
-                placeholder="City"
+                size="small"
             />
             <br></br>
-            <input 
+            <TextField
+                id="outlined-zip-input"
+                variant="outlined"
+                type='text'
+                label="Zip"
+                //autoComplete="Zip"
                 onChange={handleZipChange}
                 required
-                type='text'
-                placeholder="Zip"
+                size="small"
             />
             <br></br>
-            <input 
-                onChange={handleTypeChange}
-                type="radio"
-                id="pickup"
-                name="type"
-                value="Pickup"
-            />
-            <label for="pickup">Pickup</label> 
-            <input 
-                onChange={handleTypeChange}
-                type="radio"
-                id="delivery"
-                name="type"
-                value="Delivery"
-            />
-            <label for="delivery">Delivery</label> 
+            <RadioGroup
+                aria-labelledby="radio-buttons-group-label"
+                defaultValue="delivery"
+                name="radio-buttons-group"
+             >
+                <FormControlLabel id="pickup" name="type" value="Pickup" control={<Radio />} onChange={handleTypeChange} label="Pickup" />
+                <FormControlLabel id="delivery" name="type" value="Delivery" control={<Radio />} onChange={handleTypeChange} label="Delivery" />
+            </RadioGroup>
             <br></br>
-            <button type='submit'>
-                Next
-            </button>
+            <Button 
+                variant="outlined"
+                type='submit'>Next</Button>
         </form>
-
-
+    </Container>
+    </Grid> 
         </>
     );
 }
