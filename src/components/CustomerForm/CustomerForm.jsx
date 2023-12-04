@@ -80,7 +80,7 @@ function CustomerForm() {
     <Container>
         <form onSubmit={(event) => addCustomerInfo(event)}>
             <TextField
-            
+                
                 id="outlined-name-input"
                 variant="outlined"
                 type='text'
@@ -89,6 +89,7 @@ function CustomerForm() {
                 onChange={handleNameChange}
                 required
                 size="small"
+                sx={{mb:2}}
             />
             <br></br>
             <TextField
@@ -100,6 +101,7 @@ function CustomerForm() {
                 onChange={handleAddressChange}
                 required
                 size="small"
+                sx={{mb:2}}
             />
             <br></br>
             <TextField
@@ -111,6 +113,7 @@ function CustomerForm() {
                 onChange={handleCityChange}
                 required
                 size="small"
+                sx={{mb:2}}
             />
             <br></br>
             <TextField
@@ -122,6 +125,7 @@ function CustomerForm() {
                 onChange={handleZipChange}
                 required
                 size="small"
+                sx={{mb:2}}
             />
             <br></br>
             <RadioGroup
