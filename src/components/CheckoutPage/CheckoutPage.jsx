@@ -1,66 +1,3 @@
-// import React, { useEffect } from 'react';
-// import { useDispatch, useSelector} from 'react-redux';
-
-
-// function CheckoutPage () {
-// const customerInfo = useSelector(store => store.customerInfo);
-// const cart = useSelector(store => store.cart);
-
-
-// console.log(cart);
-//     return(
-//         <>
-//         <h1>Step 3: Checkout</h1>
-//         <ul>
-//             {customerInfo.map((customer, index) =>
-//             <li key={index}>
-//                 {customer.name} <br></br>
-//                 {customer.streetAddress} <br></br>
-//                 {customer.city} <br></br>
-//                 {customer.zip} <br></br>
-//                 {customer.type} <br></br>
-//             </li>
-//             )}
-//         </ul>
-
-//         <table>
-//                <thead>
-//                 <tr>
-//                     <th>Name</th>
-//                     <th>Price</th>
-//                 </tr>
-//                </thead>
-
-//                <tbody>
-//                     {cart.map((item, index) =>
-//                         <tr key={index}>
-//                             <td>{item.name}</td> 
-//                             <td>{item.price}</td>
-//                         </tr>
-//                     )}
-//                </tbody>
-//             </table>
-//         </>
-//     )
-// }
-
-// export default CheckoutPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import Table from '@mui/material/Table';
@@ -70,12 +7,44 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Button, Grid, Container } from "@mui/material";
 import './CheckoutPage.css';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 function CheckoutPage () {
+const dispatch = useDispatch();
+let history = useHistory();
 const customerInfo = useSelector(store => store.customerInfo);
 const cart = useSelector(store => store.cart);
+
+
+
+const handleCheckout = (event) => {
+    console.log("Starting handle Checkout")
+    event.preventDefault();
+    console.log(customerInfo[0]);
+    console.log(cart[0]);
+    console.log(cart);
+    
+    const finalTotal = cart.reduce((sumPrice, item) => Number(sumPrice) + Number(item.price), 0);
+    console.log(finalTotal);
+
+    axios.post('/api/order', {
+        customer_name: customerInfo[0].name,
+        street_address: customerInfo[0].streetAddress,
+        city: customerInfo[0].city,
+        zip: customerInfo[0].zip,
+        type: customerInfo[0].type,
+        total: finalTotal
+    })
+    let action = {
+        type: 'CLEAR_CART'
+    }
+    dispatch(action);
+    history.push("/")
+}
 
 
 console.log(cart);
@@ -107,7 +76,6 @@ console.log(cart);
           {cart.map((item, index) => (
             <TableRow
               key={index}
-              //sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
             >
               <TableCell component="th" scope="row">
                 {item.name}
@@ -118,6 +86,10 @@ console.log(cart);
         </TableBody>
       </Table>
     </TableContainer>
+    <br></br>
+    <Button variant="outlined" onClick={handleCheckout}>Checkout</Button>
+
+
         </>
     )
 }
