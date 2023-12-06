@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import './App.css';
 import CustomerForm from '../CustomerForm/CustomerForm.jsx';
 import Home from '../Home/Home.jsx';
+import AdminTable from '../AdminTable/AdminTable.jsx';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { HashRouter as Router, Route } from 'react-router-dom/cjs/react-router-dom.min.js';
@@ -83,6 +84,10 @@ function App() {
 
         <Route exact path='/checkout-page'>
           <CheckoutPage />
+        </Route>
+
+        <Route exact path='/admin'>
+          <AdminTable />
         </Route>
 
       </Router >
