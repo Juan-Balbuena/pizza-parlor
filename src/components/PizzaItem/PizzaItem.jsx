@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Grid, Paper, Card, CardContent, Typography, CardMedia, Button, Container } from "@mui/material"
+import './PizzaItem.css';
 
 function PizzaItem({ pizza }) {
     
@@ -12,6 +13,7 @@ function PizzaItem({ pizza }) {
 
 
     return (
+
         
         <Grid item xs={12} sm={6} md={3}>
             <Paper elevation={5}>
